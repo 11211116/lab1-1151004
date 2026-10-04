@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王小明｜個人網站</title>
+  <meta name="description" content="王小明的個人網站：關於我、技能、作品與聯絡方式。">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --accent: #2563eb;
+      --border: #e7e5e4;
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c0a09;
+        --surface: #1c1917;
+        --text: #f5f5f4;
+        --muted: #a8a29e;
+        --accent: #60a5fa;
+        --border: #292524;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 960px; margin: 0 auto; padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    nav .logo { font-weight: 700; color: var(--text); }
+    nav ul { list-style: none; display: flex; gap: 22px; }
+    nav ul a { color: var(--muted); font-size: 0.95rem; }
+    nav ul a:hover { color: var(--text); text-decoration: none; }
+
+    main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    h2 { font-size: 1.6rem; margin-bottom: 24px; }
+    h2::before { content: "# "; color: var(--accent); }
+
+    .hero {
+      display: flex; align-items: center; gap: 48px;
+      min-height: 70vh; flex-wrap: wrap;
+    }
+    .avatar {
+      width: 180px; height: 180px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #a855f7);
+      display: grid; place-items: center;
+      font-size: 4rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; }
+    .hero .role { color: var(--accent); font-weight: 600; margin: 8px 0 16px; }
+    .hero p { color: var(--muted); max-width: 520px; }
+    .btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 22px; border-radius: 999px; font-weight: 600;
+      border: 1px solid var(--accent);
+    }
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn:hover { text-decoration: none; opacity: 0.85; }
+
+    .about p { color: var(--muted); margin-bottom: 14px; max-width: 720px; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skills span {
+      padding: 6px 16px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
+    .card .tags { font-size: 0.8rem; color: var(--muted); }
+
+    .timeline { border-left: 2px solid var(--border); padding-left: 24px; }
+    .timeline .item { position: relative; margin-bottom: 32px; }
+    .timeline .item::before {
+      content: ""; position: absolute; left: -31px; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+    }
+    .timeline .date { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+    .timeline h3 { font-size: 1.1rem; }
+    .timeline p { color: var(--muted); font-size: 0.95rem; }
+
+    .contact p { color: var(--muted); margin-bottom: 20px; }
+    .contact ul { list-style: none; display: grid; gap: 10px; }
+
+    footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 640px) {
+      nav ul { gap: 14px; }
+      .hero { flex-direction: column; text-align: center; justify-content: center; }
+      .hero p { margin: 0 auto; }
+      .btns { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo">王小明</a>
+      <ul>
+        <li><a href="#about">關於</a></li>
+        <li><a href="#projects">作品</a></li>
+        <li><a href="#experience">經歷</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="avatar" aria-hidden="true">明</div>
+      <div>
+        <h1>嗨，我是王小明 👋</h1>
+        <div class="role">前端工程師 · 設計愛好者</div>
+        <p>我熱衷於打造簡潔、好用且美觀的網頁體驗。目前住在台北，喜歡把複雜的問題拆解成簡單的解法。</p>
+        <div class="btns">
+          <a href="#projects" class="btn primary">看看我的作品</a>
+          <a href="#contact" class="btn">與我聯絡</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2>關於我</h2>
+      <p>我擁有 5 年網頁開發經驗，專注於前端架構、使用者介面設計與網站效能優化。曾參與電商平台、SaaS 產品與多個品牌官網的開發。</p>
+      <p>工作之餘，我喜歡攝影、爬山，也會在部落格分享技術筆記。</p>
+      <h3 style="margin: 28px 0 14px;">技能</h3>
+      <div class="skills">
+        <span>HTML / CSS</span>
+        <span>JavaScript</span>
+        <span>TypeScript</span>
+        <span>React</span>
+        <span>Vue</span>
+        <span>Node.js</span>
+        <span>Figma</span>
+        <span>Git</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>精選作品</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>旅遊行程規劃 App</h3>
+          <p>可拖曳排序的行程規劃工具，支援多人協作與離線使用。</p>
+          <div class="tags">React · PWA · Firebase</div>
+        </article>
+        <article class="card">
+          <h3>咖啡品牌官網</h3>
+          <p>為在地咖啡品牌設計的形象網站，Lighthouse 效能分數 98。</p>
+          <div class="tags">HTML · CSS · GSAP</div>
+        </article>
+        <article class="card">
+          <h3>個人記帳工具</h3>
+          <p>簡單直覺的記帳網頁，提供圖表化的月度支出分析。</p>
+          <div class="tags">Vue · Chart.js</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>經歷</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="date">2023 – 至今</div>
+          <h3>資深前端工程師｜某科技公司</h3>
+          <p>主導設計系統建置，帶領 4 人團隊重構核心產品前端。</p>
+        </div>
+        <div class="item">
+          <div class="date">2020 – 2023</div>
+          <h3>前端工程師｜某數位代理商</h3>
+          <p>負責 20+ 個品牌網站開發，與設計師密切合作。</p>
+        </div>
+        <div class="item">
+          <div class="date">2016 – 2020</div>
+          <h3>資訊工程學系｜某大學</h3>
+          <p>學士學位，專題研究網頁無障礙設計。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>聯絡我</h2>
+      <p>歡迎合作邀約或任何交流，我通常會在 48 小時內回覆。</p>
+      <ul>
+        <li>📧 <a href="mailto:hello@example.com">hello@example.com</a></li>
+        <li>💼 <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li>💻 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© 2026 王小明. All rights reserved.</footer>
+</body>
+</html>
